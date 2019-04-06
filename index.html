@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      #menu {
+        position: fixed;
+        background: #fff;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .marker {
+        background-image: url('check.png');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<div id='menu'>
+    <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+    <label for='basic'>Basic</label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>Satellite</label>
+</div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiaGlsbHM5NSIsImEiOiJjajI5YjM4YjQwMDR5MzNwam0yYmx0M2d1In0.S-Ch7EFnBYY76pAAVjUK4g';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/hills95/cju5jo7j80t971fo3jeq2br87',
+  center: [-3.743, 5.213],
+  zoom: 12
+});
+
+// code from the next step will go here!
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-3.759041, 5.227985]
+    },
+    properties: {
+      title: 'SoTM Africa Venue',
+      description: 'VILLAGE OF INFORMATION TECHNOLOGY AND BIOTECHNOLOGY'
+    }
+  }]
+};
+
+// add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+  .setLngLat(marker.geometry.coordinates)
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+  .addTo(map);
+});
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/hills95/cju5jo7j80t971fo3jeq2br87');
+}
+function switchLayer1(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/hills95/cju5ku0t50uk11fo88g10uvwf');
+
+}
+function switchLayer2(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/hills95/cju5jo7j80t971fo3jeq2br87');
+
+}
+
+    inputs[0].onclick = switchLayer;
+     inputs[1].onclick = switchLayer1;
+     inputs[2].onclick = switchLayer2;
+
+</script>
+
+</body>
+</html>
