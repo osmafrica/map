@@ -26,7 +26,7 @@
         font-family: 'Open Sans', sans-serif;
       }
       .marker {
-        background-image: url('check.png');
+        background-image: url('placeholder.png');
         background-size: cover;
         width: 50px;
         height: 50px;
@@ -60,9 +60,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaGlsbHM5NSIsImEiOiJjajI5YjM4YjQwMDR5MzNwam0yY
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/hills95/cju5jo7j80t971fo3jeq2br87',
-  center: [-3.743, 5.213],
-  zoom: 12
+  style: 'mapbox://styles/hills95/cjucno6rr08tj1fnxmbbby0sp',
+  center: [-3.759041, 5.227985],
+  zoom: 13.8
 });
 
 // code from the next step will go here!
@@ -101,7 +101,7 @@ var inputs = layerList.getElementsByTagName('input');
 
 function switchLayer(layer) {
     var layerId = layer.target.id;
-    map.setStyle('mapbox://styles/hills95/cju5jo7j80t971fo3jeq2br87');
+    map.setStyle('mapbox://styles/hills95/cjucno6rr08tj1fnxmbbby0sp');
 }
 function switchLayer1(layer) {
     var layerId = layer.target.id;
@@ -110,7 +110,7 @@ function switchLayer1(layer) {
 }
 function switchLayer2(layer) {
     var layerId = layer.target.id;
-    map.setStyle('mapbox://styles/hills95/cju5jo7j80t971fo3jeq2br87');
+    map.setStyle('mapbox://styles/hills95/cjucno6rr08tj1fnxmbbby0sp');
 
 }
 
