@@ -47,13 +47,6 @@
 
 <div id='map'></div>
 
-<div id='menu'>
-    <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
-    <label for='basic'>Basic</label>
-    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
-    <label for='satellite'>Satellite</label>
-</div>
-
 <script>
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGlsbHM5NSIsImEiOiJjajI5YjM4YjQwMDR5MzNwam0yYmx0M2d1In0.S-Ch7EFnBYY76pAAVjUK4g';
@@ -95,29 +88,6 @@ geojson.features.forEach(function(marker) {
     .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
   .addTo(map);
 });
-
-var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
-
-function switchLayer(layer) {
-    var layerId = layer.target.id;
-    map.setStyle('mapbox://styles/hills95/cjucno6rr08tj1fnxmbbby0sp');
-}
-function switchLayer1(layer) {
-    var layerId = layer.target.id;
-    map.setStyle('mapbox://styles/hills95/cju5ku0t50uk11fo88g10uvwf');
-
-}
-function switchLayer2(layer) {
-    var layerId = layer.target.id;
-    map.setStyle('mapbox://styles/hills95/cjucno6rr08tj1fnxmbbby0sp');
-
-}
-
-    inputs[0].onclick = switchLayer;
-     inputs[1].onclick = switchLayer1;
-     inputs[2].onclick = switchLayer2;
-
 </script>
 
 </body>
